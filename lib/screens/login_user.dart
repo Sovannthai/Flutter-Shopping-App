@@ -1,5 +1,5 @@
 import 'package:country_code_picker/country_code_picker.dart';
-import 'package:first_app/screens/app_dashboard.dart';
+import 'package:first_app/screens/verify.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -104,7 +104,7 @@ class _LoginUserState extends State<LoginUser> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const AppDashboard()));
+                          builder: (context) => const OtpVerificationScreen()));
                 },
                 child: const Text(
                   'Sign in',
