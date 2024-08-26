@@ -1,5 +1,4 @@
 import 'package:first_app/screens/Category/category_detail.dart';
-import 'package:first_app/screens/Home/home_screen.dart';
 import 'package:flutter/material.dart';
 
 class CategoryScreen extends StatefulWidget {
@@ -10,44 +9,15 @@ class CategoryScreen extends StatefulWidget {
 }
 
 class _CategoryScreenState extends State<CategoryScreen> {
-  int _selectedIndex = 0;
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-    switch (index) {
-      case 0:
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const HomeScreen()));
-        break;
-      case 1:
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const CategoryScreen()));
-        break;
-      case 2:
-        Navigator.pushNamed(context, '/order');
-        break;
-      case 3:
-        Navigator.pushNamed(context, '/profile');
-        break;
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Category'),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {
-            // Implement navigation logic here
-          },
-        ),
+        centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(8.0), // Add padding around the row
+        padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
             Row(
@@ -161,30 +131,6 @@ class _CategoryScreenState extends State<CategoryScreen> {
             ),
           ],
         ),
-      ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Image.asset('assets/icons/home.png'),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Image.asset('assets/icons/category.png'),
-            label: 'Category',
-          ),
-          BottomNavigationBarItem(
-            icon: Image.asset('assets/icons/bag.png'),
-            label: 'Order',
-          ),
-          BottomNavigationBarItem(
-            icon: Image.asset('assets/icons/person.png'),
-            label: 'Profile',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.brown,
-        unselectedItemColor: Colors.grey,
-        onTap: _onItemTapped, // This calls the method when an item is tapped
       ),
     );
   }

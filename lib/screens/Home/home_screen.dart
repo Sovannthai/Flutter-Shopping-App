@@ -7,16 +7,14 @@ class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
 
   @override
-  // ignore: library_private_types_in_public_api
   _HomeScreenState createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
   int _selectedIndex = 0;
-  bool isSearchActive = false; // Flag to track search mode
+  bool isSearchActive = false;
   TextEditingController searchController = TextEditingController();
 
-  // ignore: prefer_final_fields
   List<bool> _bestSelling = List.generate(6, (_) => false);
   final List<bool> _favoriteRecomment = List.generate(6, (_) => false);
   final List<bool> _popularFavorite = List.generate(6, (_) => false);
@@ -28,23 +26,30 @@ class _HomeScreenState extends State<HomeScreen> {
   ];
 
   void _onItemTapped(int index) {
+    if (index == _selectedIndex) {
+      Navigator.pop(context);
+      return;
+    }
+
     setState(() {
       _selectedIndex = index;
     });
+
     switch (index) {
       case 0:
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const HomeScreen()));
+        Navigator.pop(context);
         break;
       case 1:
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const CategoryScreen()));
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const CategoryScreen()),
+        );
         break;
       case 2:
-        Navigator.pushNamed(context, '/order');
+        Navigator.pushReplacementNamed(context, '/order');
         break;
       case 3:
-        Navigator.pushNamed(context, '/profile');
+        Navigator.pushReplacementNamed(context, '/profile');
         break;
     }
   }
@@ -137,30 +142,7 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Image.asset('assets/icons/home.png'),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Image.asset('assets/icons/category.png'),
-            label: 'Category',
-          ),
-          BottomNavigationBarItem(
-            icon: Image.asset('assets/icons/bag.png'),
-            label: 'Category',
-          ),
-          BottomNavigationBarItem(
-            icon: Image.asset('assets/icons/person.png'),
-            label: 'Profile',
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: Colors.brown,
-        unselectedItemColor: Colors.grey,
-        onTap: _onItemTapped,
-      ),
+      
     );
   }
 

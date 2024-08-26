@@ -1,5 +1,5 @@
 import 'package:device_preview/device_preview.dart';
-import 'package:first_app/screens/Favorite/favorite_screen.dart';
+import 'package:first_app/screens/Product/product_detail.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Welcome to our Shop!',
-      home: WishlistScreen(),
+      home: ProductDetail(),
       builder: DevicePreview.appBuilder,
     );
   }
