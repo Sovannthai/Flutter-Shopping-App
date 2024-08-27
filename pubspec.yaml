@@ -24,6 +24,13 @@ dev_dependencies:
     sdk: flutter
   flutter_signin_button: ^2.0.0
   flutter_lints: ^3.0.0
+  flutter_launcher_icons: ^0.10.0  # Add this line
+
+
+flutter_icons:
+  android: true
+  ios: true
+  image_path: "assets/images/my_onboard.png"
 
 flutter:
   uses-material-design: true
