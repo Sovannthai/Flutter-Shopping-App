@@ -1,4 +1,5 @@
 import 'package:first_app/screens/Home/home_screen.dart';
+import 'package:first_app/screens/dashboard/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
@@ -96,7 +97,7 @@ class _OtpVerificationScreenState extends State<OtpVerificationScreen> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const HomeScreen()),
+                            builder: (context) => const DashboardScreen()),
                       );
                     },
                     style: ElevatedButton.styleFrom(

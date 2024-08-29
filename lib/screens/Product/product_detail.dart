@@ -15,6 +15,7 @@ class _ProductDetailState extends State<ProductDetail> {
     'assets/images/recomment_product.jpg',
     'assets/images/popular_product.jpg',
   ];
+
   void _toggleBestSellingFavorite(int index) {
     setState(() {
       _bestSelling[index] = !_bestSelling[index];
@@ -26,205 +27,195 @@ class _ProductDetailState extends State<ProductDetail> {
     return DefaultTabController(
       length: 2, // Number of tabs
       child: Scaffold(
-        body: SingleChildScrollView(
-          scrollDirection: Axis.vertical,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Stack(
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Stack(
+              children: [
+                CarouselSlider(
+                  options: CarouselOptions(
+                    autoPlay: true,
+                    enlargeCenterPage: false,
+                    viewportFraction: 1,
+                    enableInfiniteScroll: true,
+                    height: MediaQuery.of(context).size.width * 0.8,
+                  ),
+                  items: imgList
+                      .map((item) => Image.asset(
+                            item,
+                            width: MediaQuery.of(context).size.width,
+                            height: MediaQuery.of(context).size.width,
+                            fit: BoxFit.cover,
+                          ))
+                      .toList(),
+                ),
+                Positioned(
+                  top: 20,
+                  left: 20,
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: const Icon(
+                      Icons.arrow_back,
+                      color: Colors.white,
+                      size: 30,
+                    ),
+                  ),
+                ),
+                Positioned(
+                  top: 20,
+                  right: 20,
+                  child: InkWell(
+                    onTap: () {
+                      // Handle favorite button press
+                    },
+                    child: const Icon(
+                      Icons.favorite_border,
+                      color: Colors.white,
+                      size: 30,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Row(
                 children: [
-                  CarouselSlider(
-                    options: CarouselOptions(
-                      autoPlay: true,
-                      enlargeCenterPage: false,
-                      viewportFraction: 1,
-                      enableInfiniteScroll: true,
-                      height: MediaQuery.of(context).size.width * 0.8,
-                    ),
-                    items: imgList
-                        .map((item) => Image.asset(
-                              item,
-                              width: MediaQuery.of(context).size.width,
-                              height: MediaQuery.of(context).size.width,
-                              fit: BoxFit.cover,
-                            ))
-                        .toList(),
-                  ),
-                  Positioned(
-                    top: 20,
-                    left: 20,
-                    child: InkWell(
-                      onTap: () {
-                        Navigator.pop(context);
-                      },
-                      child: const Icon(
-                        Icons.arrow_back,
-                        color: Colors.white,
-                        size: 30,
-                      ),
+                  Text(
+                    "Product Name",
+                    style: TextStyle(
+                      fontSize: 22,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Positioned(
-                    top: 20,
-                    right: 20,
-                    child: InkWell(
-                      onTap: () {
-                        // Handle favorite button press
-                      },
-                      child: const Icon(
-                        Icons.favorite_border,
-                        color: Colors.white,
-                        size: 30,
-                      ),
+                  Spacer(),
+                  Icon(Icons.star, color: Colors.amber),
+                  SizedBox(width: 4),
+                  Text(
+                    "5.0",
+                    style: TextStyle(fontSize: 16),
+                  ),
+                ],
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Row(
+                children: [
+                  const Text(
+                    "\$99.9",
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.brown,
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  const Text(
+                    "Brand Name",
+                    style: TextStyle(fontSize: 16, color: Colors.grey),
+                  ),
+                  const SizedBox(width: 8),
+                  Container(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 4, horizontal: 8),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10.0),
+                      color: Colors.red,
+                    ),
+                    child: const Text(
+                      "Discount",
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.bold),
                     ),
                   ),
                 ],
               ),
-              const Padding(
-                padding: EdgeInsets.all(16.0),
-                child: Row(
-                  children: [
-                    Text(
-                      "Product Name",
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                      ),
+            ),
+            const SizedBox(height: 20),
+            const TabBar(
+              tabs: [
+                Tab(
+                  child: Text(
+                    'Description',
+                    style: TextStyle(
+                      color: Colors.brown,
+                      fontWeight: FontWeight.bold,
                     ),
-                    Spacer(),
-                    Icon(Icons.star, color: Colors.amber),
-                    SizedBox(width: 4),
-                    Text(
-                      "5.0",
-                      style: TextStyle(
-                        fontSize: 16,
-                      ),
-                    ),
-                  ],
+                  ),
                 ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: Row(
-                  children: [
-                    const Text(
-                      "\$99.9",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.brown,
-                      ),
+                Tab(
+                  child: Text(
+                    'Review',
+                    style: TextStyle(
+                      color: Colors.brown,
+                      fontWeight: FontWeight.bold,
                     ),
-                    const SizedBox(width: 8),
-                    const Text(
-                      "Brand Name",
+                  ),
+                ),
+              ],
+              indicatorColor: Colors.brown, 
+            ),
+            const SizedBox(height: 20),
+            Expanded(
+              child: TabBarView(
+                children: [
+                  SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        const Padding(
+                          padding: EdgeInsets.all(16.0),
+                          child: Text(
+                            "Detailed product description goes here.",
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ),
+                        _buildSectionTitle('Most Popular', () {}),
+                        _bestSellingProduct(),
+                      ],
+                    ),
+                  ),
+                  const Padding(
+                    padding: EdgeInsets.all(16.0),
+                    child: Text(
+                      "Customer reviews go here.",
                       style: TextStyle(
                         fontSize: 16,
                         color: Colors.grey,
                       ),
                     ),
-                    const SizedBox(width: 8),
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 4,
-                        horizontal: 8,
-                      ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10.0),
-                        color: Colors.red,
-                      ),
-                      child: const Text(
-                        "Discount",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 20),
-              const TabBar(
-                tabs: [
-                  Tab(
-                    child: Text(
-                      'Description',
-                      style: TextStyle(
-                        color: Colors.brown,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                  Tab(
-                    child: Text(
-                      'Review',
-                      style: TextStyle(
-                        color: Colors.brown,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
                   ),
                 ],
-                indicatorColor: Colors.brown,
               ),
-              const SizedBox(height: 20),
-              const SizedBox(
-                height: 200,
-                child: TabBarView(
-                  children: [
-                    // Description tab content
-                    Padding(
-                      padding: EdgeInsets.all(16.0),
-                      child: Text(
-                        "Detailed product description goes here.",
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.grey,
-                        ),
-                      ),
+            ),
+            const SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(10, 10, 10, 25),
+              child: SizedBox(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.width / 8,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color(0xFF683212),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10),
                     ),
-                    // Review tab content
-                    Padding(
-                      padding: EdgeInsets.all(16.0),
-                      child: Text(
-                        "Customer reviews go here.",
-                        style: TextStyle(
-                          fontSize: 16,
-                          color: Colors.grey,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(height: 20),
-              _buildSectionTitle('Most Popular', () {}),
-              _bestSellingProduct(),
-              const SizedBox(height: 20),
-              Padding(
-                padding: const EdgeInsets.fromLTRB(10, 10, 10, 25),
-                child: SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.width / 8,
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF683212),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      padding: const EdgeInsets.symmetric(vertical: 15),
-                    ),
-                    onPressed: () {},
-                    child: const Text(
-                      'Add to cart',
-                      style: TextStyle(fontSize: 18, color: Colors.white),
-                    ),
+                    padding: const EdgeInsets.symmetric(vertical: 15),
+                  ),
+                  onPressed: () {},
+                  child: const Text(
+                    'Add to cart',
+                    style: TextStyle(fontSize: 18, color: Colors.white),
                   ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
@@ -300,9 +291,7 @@ class _ProductDetailState extends State<ProductDetail> {
                         left: 8.0,
                         child: Container(
                           padding: const EdgeInsets.symmetric(
-                            vertical: 2.0,
-                            horizontal: 6.0,
-                          ),
+                              vertical: 2.0, horizontal: 6.0),
                           decoration: BoxDecoration(
                             color: Colors.red,
                             borderRadius: BorderRadius.circular(15.0),
