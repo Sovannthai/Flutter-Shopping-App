@@ -58,7 +58,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                                   'name': 'Cool White T-shirt',
                                   'price': 19.00,
                                   'oldPrice': 110,
-                                  'discount': null,
+                                  'discount': 25,
                                   'rating': 5.0,
                                   'reviews': 12,
                                 },
@@ -77,7 +77,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                                   'name': 'Blue T-shirt',
                                   'price': 19.00,
                                   'oldPrice': 110.00,
-                                  'discount': 20,
+                                  'discount': 15,
                                   'rating': 5.0,
                                   'reviews': 12,
                                 },
@@ -86,7 +86,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                                   'name': 'Women T-shirt',
                                   'price': 19.00,
                                   'oldPrice': 110.00,
-                                  'discount': 20,
+                                  'discount': 30,
                                   'rating': 5.0,
                                   'reviews': 12,
                                 },
@@ -122,7 +122,53 @@ class _CategoryScreenState extends State<CategoryScreen> {
                       ),
                       title: const Text('Dress'),
                       onTap: () {
-                        // Implement category selection logic here
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const CategoryDetailScreen(
+                              categoryName: 'Dress',
+                              products: [
+                                {
+                                  'image': 'assets/images/product.jpg',
+                                  'name': 'Cool White T-shirt',
+                                  'price': 19.00,
+                                  'oldPrice': 110,
+                                  'discount': 25,
+                                  'rating': 5.0,
+                                  'reviews': 12,
+                                },
+                                {
+                                  'image':
+                                      'assets/images/recomment_product.jpg',
+                                  'name': 'Girl T-shirt',
+                                  'price': 19.00,
+                                  'oldPrice': 110.00,
+                                  'discount': 20,
+                                  'rating': 5.0,
+                                  'reviews': 12,
+                                },
+                                {
+                                  'image': 'assets/images/popular_product.jpg',
+                                  'name': 'Blue T-shirt',
+                                  'price': 19.00,
+                                  'oldPrice': 110.00,
+                                  'discount': 15,
+                                  'rating': 5.0,
+                                  'reviews': 12,
+                                },
+                                {
+                                  'image': 'assets/images/search.jpg',
+                                  'name': 'Women T-shirt',
+                                  'price': 19.00,
+                                  'oldPrice': 110.00,
+                                  'discount': 30,
+                                  'rating': 5.0,
+                                  'reviews': 12,
+                                },
+                              ],
+                            ),
+                          ),
+                        );
                       },
                     ),
                   ),

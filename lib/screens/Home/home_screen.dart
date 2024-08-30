@@ -121,12 +121,15 @@ class _HomeScreenState extends State<HomeScreen> {
                   enableInfiniteScroll: true,
                 ),
                 items: imgList
-                    .map((item) => Center(
-                            child: ClipRRect(
+                    .map(
+                      (item) => Center(
+                        child: ClipRRect(
                           borderRadius: BorderRadius.circular(18),
                           child:
                               Image.asset(item, fit: BoxFit.cover, width: 1000),
-                        )))
+                        ),
+                      ),
+                    )
                     .toList(),
               ),
               const SizedBox(height: 20),
@@ -142,7 +145,6 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
         ),
       ),
-      
     );
   }
 

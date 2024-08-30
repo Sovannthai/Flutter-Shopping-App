@@ -1,6 +1,12 @@
 import 'package:first_app/screens/Favorite/favorite_screen.dart';
 import 'package:first_app/screens/language/language.dart';
+import 'package:first_app/screens/login_user.dart';
 import 'package:first_app/screens/notification/notification.dart';
+import 'package:first_app/screens/profile/about_us.dart';
+import 'package:first_app/screens/profile/edit_profile.dart';
+import 'package:first_app/screens/profile/hlep.dart';
+import 'package:first_app/screens/profile/privacy_policy.dart';
+import 'package:first_app/screens/profile/term_condition.dart';
 import 'package:first_app/screens/promotion/promotion.dart';
 import 'package:flutter/material.dart';
 
@@ -58,7 +64,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
           title: const Text('Edit Profile'),
           trailing: const Icon(Icons.arrow_forward_ios),
           onTap: () {
-            // Navigate to Edit Profile
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const EditProfileScreen()),
+            );
           },
         ),
         ListTile(
@@ -162,7 +172,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
           title: const Text('About Us'),
           trailing: const Icon(Icons.arrow_forward_ios),
           onTap: () {
-            // Navigate to About Us
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const AboutScreen()),
+            );
           },
         ),
         ListTile(
@@ -174,7 +187,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
           title: const Text('Privacy Policy'),
           trailing: const Icon(Icons.arrow_forward_ios),
           onTap: () {
-            // Navigate to Privacy Policy
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const PrivacyPolicy()),
+            );
           },
         ),
         ListTile(
@@ -186,7 +202,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
           title: const Text('Term & Conditional'),
           trailing: const Icon(Icons.arrow_forward_ios),
           onTap: () {
-            // Navigate to Terms & Conditions
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const TermCondition()),
+            );
           },
         ),
         ListTile(
@@ -198,7 +217,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
           title: const Text('Help Center'),
           trailing: const Icon(Icons.arrow_forward_ios),
           onTap: () {
-            // Navigate to Help Center
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const HelpScreen()),
+            );
           },
         ),
       ],
@@ -216,7 +238,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
           title: const Text('Sign out'),
           onTap: () {
-            // Sign out logic
+            _showSignOutDialog();
           },
         ),
         ListTile(
@@ -227,10 +249,69 @@ class _ProfileScreenState extends State<ProfileScreen> {
           ),
           title: const Text('Delete My Account'),
           onTap: () {
-            // Delete account logic
+            _showDeleteDialog();
           },
         ),
       ],
+    );
+  }
+
+  void _showSignOutDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Sign Out'),
+          content: const Text('Are you sure you want to sign out?'),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Cancel'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: const Text('Confirm'),
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const LoginUser()),
+                );
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+  void _showDeleteDialog() {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text('Deleted'),
+          content: const Text('Are you sure you want to Delted your Account?'),
+          actions: <Widget>[
+            TextButton(
+              child: const Text('Cancel'),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+            TextButton(
+              child: const Text('Confirm'),
+              onPressed: () {
+                Navigator.of(context).pop();
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => const LoginUser()),
+                );
+              },
+            ),
+          ],
+        );
+      },
     );
   }
 }

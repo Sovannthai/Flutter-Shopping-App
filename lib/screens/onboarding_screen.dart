@@ -25,14 +25,14 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        width: double.infinity, // Full width
-        height: double.infinity, // Full height
+        width: double.infinity,
+        height: double.infinity,
         decoration: const BoxDecoration(
           color: Colors.white,
         ),
         child: Image.asset(
           'assets/images/SplashScreen.jpg',
-          fit: BoxFit.cover, // Cover the entire screen
+          fit: BoxFit.cover,
         ),
       ),
     );

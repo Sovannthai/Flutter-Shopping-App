@@ -16,7 +16,7 @@ class _SearchScreenState extends State<SearchScreen> {
       'name': 'Cool White T-shirt',
       'price': 19.00,
       'oldPrice': 110,
-      'discount': null,
+      'discount': 15,
       'rating': 5.0,
       'reviews': 12,
     },

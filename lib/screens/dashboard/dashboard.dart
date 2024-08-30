@@ -17,7 +17,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   final List<Widget> _screens = [
     const HomeScreen(),
     const CategoryScreen(),
-    const OrderScreen(),
+    const OrderHistoryScreen(),
     const ProfileScreen(),
   ];
 
