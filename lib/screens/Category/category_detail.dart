@@ -60,7 +60,7 @@ class ProductCard extends StatefulWidget {
   final double rating;
   final int reviews;
 
-  const ProductCard({
+  const ProductCard({super.key, 
     required this.image,
     required this.name,
     required this.price,

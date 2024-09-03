@@ -1,4 +1,3 @@
-import 'package:first_app/screens/Home/home_screen.dart';
 import 'package:first_app/screens/dashboard/dashboard.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';

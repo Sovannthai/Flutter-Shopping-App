@@ -1,3 +1,4 @@
+import 'package:first_app/screens/order/order_detail.dart';
 import 'package:flutter/material.dart';
 
 class OrderHistoryScreen extends StatefulWidget {
@@ -93,7 +94,7 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                   ),
                 ),
                 onTap: () {
-                  print("Order tapped: ${order.orderId}");
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const OrderDetail()),);
                 },
               ),
             ),

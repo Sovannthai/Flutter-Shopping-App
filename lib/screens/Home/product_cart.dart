@@ -10,7 +10,7 @@ class ProductCard extends StatefulWidget {
   final double rating;
   final int reviews;
 
-  ProductCard({
+  const ProductCard({super.key, 
     required this.image,
     required this.name,
     required this.price,
@@ -75,7 +75,7 @@ class _ProductCardState extends State<ProductCard> {
                   child: Row(
                     children: [
                       Text(
-                        "\$ ${widget.price.toString()}",
+                        "\$${widget.price.toStringAsFixed(2)}",
                         style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,

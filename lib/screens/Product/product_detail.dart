@@ -1,3 +1,5 @@
+import 'package:first_app/screens/Category/category_detail.dart';
+import 'package:first_app/screens/rating_review/rating_review.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
@@ -10,7 +12,7 @@ class ProductDetail extends StatefulWidget {
 
 class _ProductDetailState extends State<ProductDetail>
     with TickerProviderStateMixin {
-  List<bool> _bestSelling = List.generate(6, (_) => false);
+  final List<bool> _bestSelling = List.generate(6, (_) => false);
   final List<String> imgList = [
     'assets/images/product.jpg',
     'assets/images/recomment_product.jpg',
@@ -105,7 +107,7 @@ class _ProductDetailState extends State<ProductDetail>
             child: Row(
               children: [
                 Text(
-                  "Product Name",
+                  "T-shirt",
                   style: TextStyle(
                     fontSize: 22,
                     fontWeight: FontWeight.bold,
@@ -135,8 +137,8 @@ class _ProductDetailState extends State<ProductDetail>
                 ),
                 const SizedBox(width: 8),
                 const Text(
-                  "Brand Name",
-                  style: TextStyle(fontSize: 16, color: Colors.grey),
+                  "\$199.00",
+                  style: TextStyle(fontSize: 16, color: Colors.red),
                 ),
                 const SizedBox(width: 8),
                 Container(
@@ -147,7 +149,7 @@ class _ProductDetailState extends State<ProductDetail>
                     color: Colors.red,
                   ),
                   child: const Text(
-                    "Discount",
+                    "30% OFF",
                     style: TextStyle(
                         color: Colors.white, fontWeight: FontWeight.bold),
                   ),
@@ -165,7 +167,10 @@ class _ProductDetailState extends State<ProductDetail>
                   backgroundColor:
                       _selectedTabIndex == 0 ? Colors.brown : Colors.grey,
                 ),
-                child: const Text('Description',style: TextStyle(color: Colors.white),),
+                child: const Text(
+                  'Description',
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
               ElevatedButton(
                 onPressed: () => _onTabButtonPressed(1),
@@ -173,7 +178,10 @@ class _ProductDetailState extends State<ProductDetail>
                   backgroundColor:
                       _selectedTabIndex == 1 ? Colors.brown : Colors.grey,
                 ),
-                child: const Text('Review',style: TextStyle(color: Colors.white),),
+                child: const Text(
+                  'Review',
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
             ],
           ),
@@ -189,54 +197,232 @@ class _ProductDetailState extends State<ProductDetail>
                       const Padding(
                         padding: EdgeInsets.all(16.0),
                         child: Text(
-                          "Detailed product description goes here.",
+                          "Welcome to dinoclaire.my shop!We provide the best service and the best beauty products. Wholesale please. Welcome to dinoclaire. my shop! We provide the best service and the best beauty products. Wholesale please.see more",
                           style: TextStyle(
                             fontSize: 16,
                             color: Colors.grey,
                           ),
                         ),
                       ),
-                      _buildSectionTitle('Best Selling Products', () {}),
-                      _bestSellingProduct(),
+                      const SizedBox(height: 10),
+                      Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Text(
+                              'Select Size',
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          const SizedBox(height: 20),
+                          _buildSizeSelector(),
+                        ],
+                      ),
+                      _buildSectionTitle('Related Products', () {}),
+                      const SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: SizedBox(
+                                width: 170.0,
+                                height: 280.0,
+                                child: ProductCard(
+                                  image: 'assets/images/popular_product.jpg',
+                                  name: 'Tshirt',
+                                  price: 99.00,
+                                  rating: 5,
+                                  reviews: 10,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: SizedBox(
+                                width: 170.0,
+                                height: 280.0,
+                                child: ProductCard(
+                                  image: 'assets/images/recomment_product.jpg',
+                                  name: 'Tshirt',
+                                  price: 99.00,
+                                  rating: 5,
+                                  reviews: 10,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: SizedBox(
+                                width: 170.0,
+                                height: 280.0,
+                                child: ProductCard(
+                                  image: 'assets/images/product.jpg',
+                                  name: 'Tshirt',
+                                  price: 99.00,
+                                  rating: 5,
+                                  reviews: 10,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.all(8.0),
+                              child: SizedBox(
+                                width: 170.0,
+                                height: 280.0,
+                                child: ProductCard(
+                                  image: 'assets/images/search.jpg',
+                                  name: 'Tshirt',
+                                  price: 99.00,
+                                  rating: 5,
+                                  reviews: 10,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      )
                     ],
                   ),
                 ),
-                const Padding(
-                  padding: EdgeInsets.all(16.0),
-                  child: Text(
-                    "Customer reviews go here.",
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.grey,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 20),
-                Padding(
-                  padding: const EdgeInsets.fromLTRB(10, 10, 10, 25),
-                  child: SizedBox(
-                    width: MediaQuery.of(context).size.width,
-                    height: MediaQuery.of(context).size.width / 8,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF683212),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(10),
+                SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: Column(
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: SizedBox(
+                          child: RatingAndReview(
+                            averageRating: 4.5,
+                            totalReviews: 120,
+                            reviews: [
+                              Review(
+                                userName: "John Doe",
+                                userImage: "assets/images/thai.jpg",
+                                date: "June 10, 2023",
+                                rating: 4.5,
+                                comment:
+                                    "Recently I have purchased this perfume and it’s fragrance is very nice, I love it",
+                                images: [
+                                  "assets/images/popular_product.jpg",
+                                  "assets/images/popular_product.jpg"
+                                ],
+                              ),
+                              Review(
+                                userName: "Jane Doe",
+                                userImage: "assets/images/me.jpg",
+                                date: "June 10, 2023",
+                                rating: 4.0,
+                                comment:
+                                    "The product quality is really good, satisfied with the purchase.",
+                                images: [
+                                  "assets/images/product.jpg",
+                                  "assets/images/product.jpg"
+                                ],
+                              ),
+                              Review(
+                                userName: "Noun SreyPech",
+                                userImage: "assets/images/image.png",
+                                date: "June 10, 2023",
+                                rating: 4.0,
+                                comment:
+                                    "The product quality is really good, satisfied with the purchase.",
+                                images: [
+                                  "assets/images/search.jpg",
+                                  "assets/images/search.jpg"
+                                ],
+                              ),
+                            ],
+                          ),
                         ),
-                        padding: const EdgeInsets.symmetric(vertical: 15),
                       ),
-                      onPressed: () {},
-                      child: const Text(
-                        'Add to cart',
-                        style: TextStyle(fontSize: 18, color: Colors.white),
-                      ),
-                    ),
+                    ],
                   ),
                 ),
               ],
             ),
           ),
+          const SizedBox(height: 20),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(10, 10, 10, 25),
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.width / 8,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color(0xFF683212),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  padding: const EdgeInsets.symmetric(vertical: 8),
+                ),
+                onPressed: () {},
+                child: const Text(
+                  'Add to cart',
+                  style: TextStyle(fontSize: 18, color: Colors.white),
+                ),
+              ),
+            ),
+          ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildSizeOption(String size, bool isSelected) {
+    return GestureDetector(
+      onTap: () {
+        // Handle size selection logic
+      },
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 4),
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          color: isSelected ? Colors.brown : Colors.white,
+          border: Border.all(
+            color: isSelected ? Colors.brown : Colors.grey,
+            width: 1,
+          ),
+          boxShadow: isSelected
+              ? [
+                  BoxShadow(
+                    color: Colors.brown.withOpacity(0.3),
+                    blurRadius: 6,
+                    offset: Offset(0, 3),
+                  ),
+                ]
+              : [],
+        ),
+        child: Text(
+          size,
+          style: TextStyle(
+            fontSize: 10,
+            color: isSelected ? Colors.white : Colors.grey[800],
+            fontWeight: FontWeight.bold,
+          ),
+          textAlign: TextAlign.center,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSizeSelector() {
+    List<String> sizes = ['M', 'L', 'XL', 'XXL'];
+    String selectedSize = 'M'; // Example: track the selected size
+
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: sizes.map((size) {
+          bool isSelected = size == selectedSize;
+          return _buildSizeOption(size, isSelected);
+        }).toList(),
       ),
     );
   }
@@ -262,124 +448,6 @@ class _ProductDetailState extends State<ProductDetail>
             ),
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _bestSellingProduct() {
-    return SizedBox(
-      height: 250.0,
-      child: ListView.builder(
-        scrollDirection: Axis.horizontal,
-        itemCount: 6,
-        itemBuilder: (context, index) {
-          return Padding(
-            padding: const EdgeInsets.only(right: 10.0),
-            child: Container(
-              width: 150.0,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.0),
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 2,
-                    blurRadius: 5,
-                    offset: const Offset(0, 3),
-                  ),
-                ],
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Stack(
-                    children: [
-                      ClipRRect(
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(10.0),
-                          topRight: Radius.circular(10.0),
-                        ),
-                        child: Image.asset(
-                          'assets/images/product.jpg',
-                          height: 150.0,
-                          width: double.infinity,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      Positioned(
-                        top: 8.0,
-                        left: 8.0,
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                              vertical: 2.0, horizontal: 6.0),
-                          decoration: BoxDecoration(
-                            color: Colors.red,
-                            borderRadius: BorderRadius.circular(15.0),
-                          ),
-                          child: const Text(
-                            '20% OFF',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 12.0,
-                            ),
-                          ),
-                        ),
-                      ),
-                      Positioned(
-                        top: 8.0,
-                        right: 8.0,
-                        child: IconButton(
-                          icon: Icon(
-                            _bestSelling[index]
-                                ? Icons.favorite
-                                : Icons.favorite_border,
-                            color: Colors.white,
-                          ),
-                          onPressed: () {
-                            _toggleBestSellingFavorite(index);
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'T-shirt',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(height: 4),
-                        Text(
-                          '\$19.00',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.brown,
-                          ),
-                        ),
-                        SizedBox(height: 4),
-                        Text(
-                          '\$110.00',
-                          style: TextStyle(
-                            fontSize: 14,
-                            decoration: TextDecoration.lineThrough,
-                            color: Colors.grey,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          );
-        },
       ),
     );
   }

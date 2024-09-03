@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:first_app/screens/Category/category.dart';
 import 'package:first_app/screens/Home/search_screen.dart';
+import 'package:first_app/screens/Product/product_detail.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -15,7 +16,7 @@ class _HomeScreenState extends State<HomeScreen> {
   bool isSearchActive = false;
   TextEditingController searchController = TextEditingController();
 
-  List<bool> _bestSelling = List.generate(6, (_) => false);
+  final List<bool> _bestSelling = List.generate(6, (_) => false);
   final List<bool> _favoriteRecomment = List.generate(6, (_) => false);
   final List<bool> _popularFavorite = List.generate(6, (_) => false);
 
@@ -179,109 +180,114 @@ class _HomeScreenState extends State<HomeScreen> {
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.only(right: 10.0),
-            child: Container(
-              width: 150.0,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.0),
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 2,
-                    blurRadius: 5,
-                    offset: const Offset(0, 3),
-                  ),
-                ],
-              ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Stack(
-                    children: [
-                      ClipRRect(
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(10.0),
-                          topRight: Radius.circular(10.0),
-                        ),
-                        child: Image.asset(
-                          'assets/images/product.jpg',
-                          height: 150.0,
-                          width: double.infinity,
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      Positioned(
-                        top: 8.0,
-                        left: 8.0,
-                        child: Container(
-                          padding: const EdgeInsets.symmetric(
-                            vertical: 2.0,
-                            horizontal: 6.0,
+            child: GestureDetector(
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const ProductDetail()),);
+              },
+              child: Container(
+                width: 150.0,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10.0),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.5),
+                      spreadRadius: 2,
+                      blurRadius: 5,
+                      offset: const Offset(0, 3),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Stack(
+                      children: [
+                        ClipRRect(
+                          borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(10.0),
+                            topRight: Radius.circular(10.0),
                           ),
-                          decoration: BoxDecoration(
-                            color: Colors.red,
-                            borderRadius: BorderRadius.circular(15.0),
+                          child: Image.asset(
+                            'assets/images/product.jpg',
+                            height: 150.0,
+                            width: double.infinity,
+                            fit: BoxFit.cover,
                           ),
-                          child: const Text(
-                            '20% OFF',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize: 12.0,
+                        ),
+                        Positioned(
+                          top: 8.0,
+                          left: 8.0,
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 2.0,
+                              horizontal: 6.0,
+                            ),
+                            decoration: BoxDecoration(
+                              color: Colors.red,
+                              borderRadius: BorderRadius.circular(15.0),
+                            ),
+                            child: const Text(
+                              '20% OFF',
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 12.0,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                      Positioned(
-                        top: 8.0,
-                        right: 8.0,
-                        child: IconButton(
-                          icon: Icon(
-                            _bestSelling[index]
-                                ? Icons.favorite
-                                : Icons.favorite_border,
-                            color: Colors.white,
-                          ),
-                          onPressed: () {
-                            _toggleBestSellingFavorite(index);
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                  const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'T-shirt',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        SizedBox(height: 4),
-                        Text(
-                          '\$19.00',
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.brown,
-                          ),
-                        ),
-                        SizedBox(height: 4),
-                        Text(
-                          '\$110.00',
-                          style: TextStyle(
-                            fontSize: 14,
-                            decoration: TextDecoration.lineThrough,
-                            color: Colors.grey,
+                        Positioned(
+                          top: 8.0,
+                          right: 8.0,
+                          child: IconButton(
+                            icon: Icon(
+                              _bestSelling[index]
+                                  ? Icons.favorite
+                                  : Icons.favorite_border,
+                              color: Colors.white,
+                            ),
+                            onPressed: () {
+                              _toggleBestSellingFavorite(index);
+                            },
                           ),
                         ),
                       ],
                     ),
-                  ),
-                ],
+                    const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            'T-shirt',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(height: 4),
+                          Text(
+                            '\$19.00',
+                            style: TextStyle(
+                              fontSize: 16,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.brown,
+                            ),
+                          ),
+                          SizedBox(height: 4),
+                          Text(
+                            '\$110.00',
+                            style: TextStyle(
+                              fontSize: 14,
+                              decoration: TextDecoration.lineThrough,
+                              color: Colors.grey,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           );
@@ -299,7 +305,11 @@ class _HomeScreenState extends State<HomeScreen> {
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.only(right: 10.0),
-            child: Container(
+            child: GestureDetector(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const ProductDetail()),);
+              },
+              child: Container(
               width: 150.0,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10.0),
@@ -374,6 +384,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ],
               ),
             ),
+            )
           );
         },
       ),
@@ -389,7 +400,11 @@ class _HomeScreenState extends State<HomeScreen> {
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.only(right: 10.0),
-            child: Container(
+            child: GestureDetector(
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => const ProductDetail()),);
+              },
+              child: Container(
               width: 150.0,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(10.0),
@@ -463,6 +478,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ],
               ),
+            ),
             ),
           );
         },

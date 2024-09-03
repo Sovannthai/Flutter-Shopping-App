@@ -18,14 +18,16 @@ dependencies:
   font_awesome_flutter: ^9.2.0
   pin_code_fields: ^8.0.0
   carousel_slider: ^5.0.0
+  flutter_rating_bar: ^4.0.0
 
+  intl: any
+  image_field: ^0.0.10
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_signin_button: ^2.0.0
   flutter_lints: ^3.0.0
-  flutter_launcher_icons: ^0.10.0  # Add this line
-  intl: ^0.19.0
+  flutter_launcher_icons: ^0.10.0
 
 flutter_icons:
   android: true

@@ -165,7 +165,7 @@ class SignInButton extends StatelessWidget {
   final double? imageHeight;
 
   const SignInButton({
-    Key? key,
+    super.key,
     this.icon,
     required this.text,
     required this.color,
@@ -174,7 +174,7 @@ class SignInButton extends StatelessWidget {
     this.image,
     this.imageWidth,
     this.imageHeight,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
