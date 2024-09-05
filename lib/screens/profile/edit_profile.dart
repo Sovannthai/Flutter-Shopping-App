@@ -59,29 +59,36 @@ class _EditProfileScreenState extends State<EditProfileScreen> {
                 labelText: "Address",
               ),
             ),
-            const SizedBox(height: 20),
-            Padding(
-              padding: const EdgeInsets.fromLTRB(10, 388, 10, 25),
-              child: SizedBox(
-                width: MediaQuery.of(context).size.width,
-                height: MediaQuery.of(context).size.width / 7.5,
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: const Color(0xFF683212),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                    ),
-                    padding: const EdgeInsets.symmetric(vertical: 15),
-                  ),
-                  onPressed: () {},
-                  child: const Text(
-                    'Update',
-                    style: TextStyle(fontSize: 18, color: Colors.white),
-                  ),
-                ),
-              ),
-            ),
           ],
+        ),
+      ),
+      bottomNavigationBar: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: Container(
+          decoration: BoxDecoration(
+            color: Colors.brown,
+            borderRadius: BorderRadius.circular(10.0),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.2),
+                spreadRadius: 2,
+                blurRadius: 5,
+                offset: const Offset(0, 3),
+              ),
+            ],
+          ),
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              elevation: 0,
+              backgroundColor: Colors.transparent,
+              padding: const EdgeInsets.symmetric(vertical: 15),
+            ),
+            onPressed: () {},
+            child: const Text(
+              'Update',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
         ),
       ),
     );
