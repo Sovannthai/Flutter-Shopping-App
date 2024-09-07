@@ -79,7 +79,13 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                   ],
                 ),
                 trailing: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const OrderDetail()),
+                    );
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.brown,
                     shape: RoundedRectangleBorder(
@@ -94,7 +100,11 @@ class _OrderHistoryScreenState extends State<OrderHistoryScreen> {
                   ),
                 ),
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => const OrderDetail()),);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const OrderDetail()),
+                  );
                 },
               ),
             ),

@@ -19,6 +19,9 @@ dependencies:
   pin_code_fields: ^8.0.0
   carousel_slider: ^5.0.0
   flutter_rating_bar: ^4.0.0
+  map_location_picker: ^1.2.7
+  google_maps_flutter: ^2.1.1
+  geocoding: ^2.1.1
 
   intl: any
   image_field: ^0.0.10

@@ -1,3 +1,4 @@
+import 'package:first_app/screens/Checkout/add_address.dart';
 import 'package:flutter/material.dart';
 
 class CheckoutScreen extends StatefulWidget {
@@ -117,20 +118,29 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
                   ),
                 ],
               ),
-              child: Row(
-                children: [
-                  const Icon(Icons.location_on, size: 30, color: Colors.brown),
-                  const SizedBox(width: 12),
-                  const Text('Add Your Address',
-                      style: TextStyle(fontSize: 16)),
-                  const Spacer(),
-                  Image.asset(
-                    'assets/icons/edit_profile.png',
-                    width: 30,
-                    height: 30,
-                    fit: BoxFit.cover,
-                  ),
-                ],
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const AddAddress()),
+                  );
+                },
+                child: Row(
+                  children: [
+                    const Icon(Icons.location_on,
+                        size: 30, color: Colors.brown),
+                    const SizedBox(width: 12),
+                    const Text('Add Your Address',
+                        style: TextStyle(fontSize: 16)),
+                    const Spacer(),
+                    Image.asset(
+                      'assets/icons/edit_profile.png',
+                      width: 30,
+                      height: 30,
+                      fit: BoxFit.cover,
+                    ),
+                  ],
+                ),
               ),
             ),
             const SizedBox(height: 16),

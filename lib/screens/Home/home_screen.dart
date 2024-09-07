@@ -2,6 +2,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:first_app/screens/Category/category.dart';
 import 'package:first_app/screens/Home/search_screen.dart';
 import 'package:first_app/screens/Product/product_detail.dart';
+import 'package:first_app/screens/cart/cart.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -100,7 +101,12 @@ class _HomeScreenState extends State<HomeScreen> {
               'assets/icons/bag.png',
               color: Colors.brown,
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const CartScreen()),
+              );
+            },
           ),
         ],
         iconTheme: const IconThemeData(color: Colors.brown),

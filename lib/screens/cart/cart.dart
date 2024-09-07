@@ -1,3 +1,4 @@
+import 'package:first_app/screens/Checkout/checkout_screen.dart';
 import 'package:flutter/material.dart';
 
 class CartScreen extends StatefulWidget {
@@ -243,11 +244,10 @@ class _CartScreenState extends State<CartScreen> {
             ),
             onPressed: () {
               if (cartItems.any((item) => item.isSelected)) {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Proceeding to Checkout...'),
-                  ),
-                );
+                Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const CheckoutScreen()),
+              );
               } else {
                 ScaffoldMessenger.of(context).showSnackBar(
                   const SnackBar(
