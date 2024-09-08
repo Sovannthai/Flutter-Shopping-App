@@ -1,4 +1,5 @@
 import 'package:first_app/screens/Category/category_detail.dart';
+import 'package:first_app/screens/cart/cart.dart';
 import 'package:first_app/screens/rating_review/rating_review.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_slider/carousel_slider.dart';
@@ -360,7 +361,9 @@ class _ProductDetailState extends State<ProductDetail>
                   ),
                   padding: const EdgeInsets.symmetric(vertical: 8),
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => const CartScreen()));
+                },
                 child: const Text(
                   'Add to cart',
                   style: TextStyle(fontSize: 18, color: Colors.white),

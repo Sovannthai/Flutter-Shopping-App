@@ -129,7 +129,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                               categoryName: 'Dress',
                               products: [
                                 {
-                                  'image': 'assets/images/product.jpg',
+                                  'image': 'assets/images/dress1.jpg',
                                   'name': 'Cool White T-shirt',
                                   'price': 19.00,
                                   'oldPrice': 110,
@@ -139,7 +139,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                                 },
                                 {
                                   'image':
-                                      'assets/images/recomment_product.jpg',
+                                      'assets/images/dress2.jpg',
                                   'name': 'Girl T-shirt',
                                   'price': 19.00,
                                   'oldPrice': 110.00,
@@ -148,7 +148,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                                   'reviews': 12,
                                 },
                                 {
-                                  'image': 'assets/images/popular_product.jpg',
+                                  'image': 'assets/images/dress3.jpg',
                                   'name': 'Blue T-shirt',
                                   'price': 19.00,
                                   'oldPrice': 110.00,
@@ -157,7 +157,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                                   'reviews': 12,
                                 },
                                 {
-                                  'image': 'assets/images/search.jpg',
+                                  'image': 'assets/images/dress4.jpg',
                                   'name': 'Women T-shirt',
                                   'price': 19.00,
                                   'oldPrice': 110.00,

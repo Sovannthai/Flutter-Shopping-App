@@ -1,5 +1,7 @@
 import 'dart:io';
 
+import 'package:dotted_border/dotted_border.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -47,15 +49,6 @@ class _ReviewScreenState extends State<ReviewScreen> {
       isImageLoading = false;
     });
   }
-
-  void _submitReview() {
-    // Implement review submission logic here
-    // Use rating, reviewText, and pickedImage values
-    print('Rating: $rating');
-    print('Review: $reviewText');
-    print('Image: ${pickedImage?.path}');
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -125,41 +118,52 @@ class _ReviewScreenState extends State<ReviewScreen> {
               const SizedBox(height: 8.0),
               GestureDetector(
                 onTap: _pickImage,
-                child: Container(
-                  width: double.infinity,
-                  height: 150,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8.0),
-                    border: Border.all(color: Colors.grey),
-                    color: Colors.grey[100],
-                  ),
-                  child: Center(
-                    child: isImageLoading
-                        ? const CircularProgressIndicator()
-                        : pickedImage != null
-                            ? Image.file(
-                                File(pickedImage!.path),
-                                width: double.infinity,
-                                height: 150,
-                                fit: BoxFit.cover,
-                              )
-                            : const Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Icon(Icons.cloud_upload_outlined,
-                                      size: 50, color: Colors.grey),
-                                  SizedBox(height: 8.0),
-                                  Text(
-                                    'Click here to upload',
-                                    style: TextStyle(color: Colors.grey),
-                                  ),
-                                ],
-                              ),
+                child: DottedBorder(
+                  color: Colors.grey,
+                  strokeWidth: 2,
+                  dashPattern: const [8, 4],
+                  borderType: BorderType.RRect,
+                  radius: const Radius.circular(8.0),
+                  child: Container(
+                    width: double.infinity,
+                    height: 150,
+                    color:
+                        Colors.grey[100],
+                    child: Center(
+                      child: isImageLoading
+                          ? const CircularProgressIndicator()
+                          : pickedImage != null
+                              ? (kIsWeb
+                                  ? Image.network(
+                                      pickedImage!
+                                          .path,
+                                      width: double.infinity,
+                                      height: 150,
+                                      fit: BoxFit.cover,
+                                    )
+                                  : Image.file(
+                                      File(pickedImage!
+                                          .path),
+                                      width: double.infinity,
+                                      height: 150,
+                                      fit: BoxFit.cover,
+                                    ))
+                              : const Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(Icons.cloud_upload_outlined,
+                                        size: 50, color: Colors.grey),
+                                    SizedBox(height: 8.0),
+                                    Text(
+                                      'Click here to upload',
+                                      style: TextStyle(color: Colors.grey),
+                                    ),
+                                  ],
+                                ),
+                    ),
                   ),
                 ),
               ),
-
-              // Submit button
               const SizedBox(height: 24.0),
               Padding(
                 padding: const EdgeInsets.fromLTRB(10, 150, 10, 10),
@@ -167,9 +171,11 @@ class _ReviewScreenState extends State<ReviewScreen> {
                   width: double.infinity,
                   height: 50.0,
                   child: ElevatedButton(
-                    onPressed: _submitReview,
+                    onPressed: (){
+                      Navigator.pop(context);
+                    },
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: const Color(0xFF6B4226), // Brown color
+                      backgroundColor: const Color(0xFF6B4226),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8.0),
                       ),

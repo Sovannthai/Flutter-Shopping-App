@@ -1,4 +1,5 @@
 import 'package:first_app/screens/Checkout/add_address.dart';
+import 'package:first_app/screens/payment/payment.dart';
 import 'package:flutter/material.dart';
 
 class CheckoutScreen extends StatefulWidget {
@@ -231,7 +232,9 @@ class _CheckoutScreenState extends State<CheckoutScreen> {
               backgroundColor: Colors.transparent,
               padding: const EdgeInsets.symmetric(vertical: 15),
             ),
-            onPressed: () {},
+            onPressed: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) => const PaymentMethodScreen()),);
+            },
             child: const Text(
               'Continue to payment',
               style: TextStyle(color: Colors.white),

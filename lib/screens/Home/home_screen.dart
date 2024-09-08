@@ -340,7 +340,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           topRight: Radius.circular(10.0),
                         ),
                         child: Image.asset(
-                          'assets/images/recomment_product.jpg',
+                          'assets/images/dress4.jpg',
                           height: 150.0,
                           width: double.infinity,
                           fit: BoxFit.cover,
@@ -369,7 +369,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Shoes',
+                          'Dress',
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,
@@ -464,7 +464,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          'Jacket',
+                          'Blue T-Shirt',
                           style: TextStyle(
                             fontSize: 16,
                             fontWeight: FontWeight.bold,

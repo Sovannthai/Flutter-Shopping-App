@@ -1,3 +1,5 @@
+import 'package:first_app/screens/Product/product_detail.dart';
+import 'package:first_app/screens/cart/cart.dart';
 import 'package:flutter/material.dart';
 
 class CategoryDetailScreen extends StatefulWidget {
@@ -60,7 +62,8 @@ class ProductCard extends StatefulWidget {
   final double rating;
   final int reviews;
 
-  const ProductCard({super.key, 
+  const ProductCard({
+    super.key,
     required this.image,
     required this.name,
     required this.price,
@@ -81,10 +84,13 @@ class _ProductCardState extends State<ProductCard> {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Handle product tap event (e.g., navigate to product detail)
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const ProductDetail()),
+        );
       },
       child: Container(
-        height: 330,
+        height: 350,
         width: 300,
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.all(Radius.circular(12.0)),
@@ -169,7 +175,7 @@ class _ProductCardState extends State<ProductCard> {
                     Expanded(
                       child: GestureDetector(
                         onTap: () {
-                          // Implement your add to cart functionality here
+                          Navigator.push(context, MaterialPageRoute(builder: (context) => const CartScreen()));
                         },
                         child: Container(
                           width: 30,
@@ -189,8 +195,6 @@ class _ProductCardState extends State<ProductCard> {
                 ),
               ],
             ),
-
-            // Discount badge (if applicable)
             if (widget.discount != null)
               Positioned(
                 top: 8,

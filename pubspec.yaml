@@ -22,6 +22,7 @@ dependencies:
   map_location_picker: ^1.2.7
   google_maps_flutter: ^2.1.1
   geocoding: ^2.1.1
+  dotted_border: ^2.0.0
 
   intl: any
   image_field: ^0.0.10
