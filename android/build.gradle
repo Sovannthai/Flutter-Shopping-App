@@ -3,14 +3,13 @@ buildscript {
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://maven.google.com' } // Ensure Google's Maven repository is included
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.4.0' // Update to a compatible Gradle plugin version
+        classpath 'com.android.tools.build:gradle:8.2.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'com.google.gms:google-services:4.4.0'
-        classpath 'io.flutter:flutter_plugin_android_lifecycle:2.0.6' // Using version 2.0.6 which is available
+        // Remove any unnecessary or conflicting dependencies
     }
 }
 
@@ -18,19 +17,5 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        maven { url 'https://maven.google.com' } // Ensure all projects have access to Google's Maven repository
     }
-}
-
-rootProject.buildDir = '../build'
-subprojects {
-    project.buildDir = "${rootProject.buildDir}/${project.name}"
-}
-
-subprojects {
-    project.evaluationDependsOn(':app')
-}
-
-tasks.register("clean", Delete) {
-    delete rootProject.buildDir
 }
